@@ -1,0 +1,7 @@
+from fabric import Connection
+user_input = input("What is your server's IP adress?")
+PERSONA = Connection(f"user@server_{user_input}")
+print("Ok, now you will learn all the server's commands!")
+YUIA = PERSONA.run("help")
+print(YUIA.standout)
+print("If you want to learn more, type man, after that, a space, and then the command to learn more!")
