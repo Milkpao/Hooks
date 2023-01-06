@@ -1,0 +1,16 @@
+import time
+import keyboard
+wire = nfc.ContactlessFrontend()
+print("Hold a card close to the reader! I give you 5 seconds!")
+time.sleep(5)
+party = wire.connect(rdwr={'on-connect': lambda tag: False})
+info = party.ndef.message
+print(info)
+print("Press x to write it on your write-able card! I'll give you 3 seconds!")
+time.sleep(3)  
+if keyboard.is_pressed('x'): 
+  party = wire.connect(rdwr={'on-connect': lambda tag: False})
+  party.write(info)
+  print("DONE!!! U HAVE HACKED!!!!!")
+party.disconnect()
+wire.close()
